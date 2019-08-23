@@ -1,4 +1,8 @@
-export function manageFriends(state = {friends: []}, action){
+export function manageFriends(state, action){
+
+    state = {
+        friends: []
+    }
 
     switch(action.type) {
         case "ADD_FRIEND": 
@@ -6,7 +10,7 @@ export function manageFriends(state = {friends: []}, action){
                 {...state, friends: [...state.friends, action.friend] }
             ) 
         case "REMOVE_FRIEND": 
-            let correctFriend = state.friends.findIndex((friend) => friend.id === action.id)
+            let correctFriend = state.friends.find((friend) => friend.id === action.id)
             return (
                 {...state,
                     friends: [
